@@ -28,23 +28,23 @@ width: 100%;
 margin: auto;
 }
 
-/* 一级菜单居中 */
+/* 一级菜单居�? */
 #nav .menus_items {
 position: absolute !important;
 width: fit-content !important;
 left: 50% !important;
 transform: translateX(-50%) !important;
 }
-/* 子菜单横向展示 */
+/* 子菜单横向展�? */
 #nav .menus_items .menus_item:hover .menus_item_child {
 display: flex !important;
 }
-/* 这里的4是代表导航栏的第4个元素，即有子菜单的元素，可以按自己需求修改 */
+/* 这里�?4是代表导航栏的第4个元素，即有子菜单的元素，可以按自己需求修�? */
 .menus_items .menus_item:nth-child(3) .menus_item_child {
 left: -80px;
 }
 
-/*黑夜霓虹灯*/
+/*黑夜霓虹�?*/
 /* 夜间模式菜单栏发光字 */
 /*[data-theme="dark"] #nav .site-page,
 [data-theme="dark"] #nav .menus_items .menus_item .menus_item_child li a {
@@ -64,7 +64,7 @@ text-shadow: 0 0 2px rgb(179, 71, 241) !important;
 transition: text-shadow 1s linear !important;
 }*/
 
-/* 日间模式不生效 */
+/* 日间模式不生�? */
 [data-theme="light"] #site-name,
 [data-theme="light"] #site-title,
 [data-theme="light"] #site-subtitle,
@@ -82,7 +82,7 @@ animation: light_10px 10s linear infinite;
 [data-theme="dark"] #post-info {
 animation: light_5px 10s linear infinite;
 }
-/* 关键帧描述 */
+/* 关键帧描�? */
 @keyframes light_15px {
 0% {
   text-shadow: #5636ed 0 0 15px;
@@ -188,7 +188,7 @@ animation: light_5px 10s linear infinite;
   position: fixed;
   width: 16px;
   height: 16px;
-  /* 这里改变跟随的底色 */
+  /* 这里改变跟随的底�? */
   background: rgb(57, 197, 187);
   border-radius: 8px;
   opacity: 0.25;
@@ -229,7 +229,7 @@ svg.icon {
   overflow: hidden;
 }
 
-/*信息状态（摸鱼）*/
+/*信息状态（摸鱼�?*/
 .card-info-avatar .author-status-box {
   position: absolute;
   bottom: 0;
@@ -287,7 +287,7 @@ svg.icon {
   background-size: cover;
 }
 
-/* 滚动条样式 */
+/* 滚动条样�? */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -322,15 +322,15 @@ svg.icon {
   background-color: var(--theme-color);
 }
 
-/* 个人信息卡片背景图 */
+/* 个人信息卡片背景�? */
 /*[data-theme="light"] #aside-content > .card-widget.card-info {
-  background-image: url(https://sourcebucket.s3.ladydaily.com/img/snowflower.webp);
+  background-image: url(/img/snowflower.webp);
   background-repeat: no-repeat;
   background-attachment: inherit;
   background-size: 100%;
 }
 [data-theme="dark"] #aside-content > .card-widget.card-info {
-  background-image: url(https://sourcebucket.s3.ladydaily.com/img/aurora.webp);
+  background-image: url(/img/aurora.webp);
   background-repeat: no-repeat;
   background-attachment: inherit;
   background-size: 100%;
