@@ -23,19 +23,23 @@
     
     
     <entry>
-      <title>mysql常用命令</title>
+      <title>PID算法(一)</title>
       <link href="/2023/01/06/2023-01-04%E6%B5%8B%E8%AF%95/"/>
       <url>/2023/01/06/2023-01-04%E6%B5%8B%E8%AF%95/</url>
       
         <content type="html"><![CDATA[]]></content>
       
       
+      <categories>
+          
+          <category> STM32 </category>
+          
+      </categories>
+      
       
         <tags>
             
-            <tag> 快捷键 </tag>
-            
-            <tag> 数据库 </tag>
+            <tag> STM32 </tag>
             
         </tags>
       
@@ -48,12 +52,12 @@
       <link href="/2023/01/06/2023-01-03%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/"/>
       <url>/2023/01/06/2023-01-03%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/</url>
       
-        <content type="html"><![CDATA[<h1 id="MarkDown"><a href="#MarkDown" class="headerlink" title="MarkDown"></a>MarkDown</h1><h2 id="一、MarkDown标题"><a href="#一、MarkDown标题" class="headerlink" title="一、MarkDown标题"></a>一、MarkDown标题</h2><p>#  ————————————这是一级标�?<br>##  ———————————-这是二级标题<br>### ———————————-这是三级标题<br>####  ——————————-这是四级标题<br>#####  ——————————这是五级标题<br>######  —————————-这是六级标题  </p><p><img src="/article/first_article/1.png" alt=""></p><h2 id="二、列表"><a href="#二、列表" class="headerlink" title="二、列表"></a>二、列表</h2><p>(1)有序列表  </p><blockquote><ol><li>列表1  <ol><li>列表1.1  </li><li>列表1.2  </li></ol></li></ol></blockquote><p>(2)无序列表  </p><blockquote><ul><li>列表1  <ul><li>列表1.1  </li><li>列表1.2  </li></ul></li></ul></blockquote><p><img src="/article/first_article/2.png" alt=""></p><h2 id="三、引用"><a href="#三、引用" class="headerlink" title="三、引用"></a>三、引用</h2><p>如果你需要在文稿中引用一段别处的句子，那么就要用到「引用」格式,如图</p><blockquote><p>山有木兮木有枝，心悦君兮君不知的🌸  </p></blockquote><h2 id="四、图片"><a href="#四、图片" class="headerlink" title="四、图片"></a>四、图片</h2><p>通过！[ 描述]（图片的相对路径/绝对路径）的符号就能引用图片<br><img src="/article/first_article/3.webp" alt=""></p><div class="note default simple"><p>default 提示块标签</p></div><h2 id="六、时间轴"><a href="#六、时间轴" class="headerlink" title="六、时间轴"></a>六、时间轴</h2><div class="timeline blue"><div class='timeline-item headline'><div class='timeline-item-title'><div class='item-circle'><p>时间轴样式</p></div></div></div><div class='timeline-item'><div class='timeline-item-title'><div class='item-circle'><p>2020-07-24 <a href="https://github.com/volantis-x/hexo-theme-volantis/releases">2.6.6 -&gt; 3.0</a></p></div></div><div class='timeline-item-content'><ol><li>如果有 <code>hexo-lazyload-image</code> 插件，需要删除并重新安装最新版本，设置 <code>lazyload.isSPA: true</code>。</li><li>2.x 版本的 css 和 js 不适用于 3.x 版本，如果使用了 <code>use_cdn: true</code> 则需要删除。</li><li>2.x 版本的 fancybox 标签在 3.x 版本中被重命名为 gallery 。</li><li>2.x 版本的置顶 <code>top: true</code> 改为了 <code>pin: true</code>，并且同样适用于 <code>layout: page</code> 的页面。</li><li>如果使用了 <code>hexo-offline</code> 插件，建议卸载，3.0 版本默认开启了 pjax 服务。</li></ol></div></div><div class='timeline-item'><div class='timeline-item-title'><div class='item-circle'><p>2020-05-15 <a href="https://github.com/volantis-x/hexo-theme-volantis/releases/tag/2.6.6">2.6.3 -&gt; 2.6.6</a></p></div></div><div class='timeline-item-content'><p>不需要额外处理。</p></div></div><div class='timeline-item'><div class='timeline-item-title'><div class='item-circle'><p>2020-04-20 <a href="https://github.com/volantis-x/hexo-theme-volantis/releases/tag/2.6.3">2.6.2 -&gt; 2.6.3</a></p></div></div><div class='timeline-item-content'><ol><li>全局搜索 <code>seotitle</code> 并替换为 <code>seo_title</code>。</li><li>group 组件的索引规则有变，使用 group 组件的文章内，<code>group: group_name</code> 对应的组件名必须是 <code>group_name</code>。</li><li>group 组件的列表名优先显示文章的 <code>short_title</code> 其次是 <code>title</code>。</li></ol></div></div></div>]]></content>
+        <content type="html"><![CDATA[<h1 id="MarkDown"><a href="#MarkDown" class="headerlink" title="MarkDown"></a>MarkDown</h1><h2 id="一、MarkDown标题"><a href="#一、MarkDown标题" class="headerlink" title="一、MarkDown标题"></a>一、MarkDown标题</h2><p>#  ————————————这是一级标�??<br>##  ———————————-这是二级标题<br>### ———————————-这是三级标题<br>####  ——————————-这是四级标题<br>#####  ——————————这是五级标题<br>######  —————————-这是六级标题  </p><p><img src="/article/first_article/1.png" alt=""></p><h2 id="二、列�"><a href="#二、列�" class="headerlink" title="二、列�?"></a>二、列�?</h2><p>(1)有序列表  </p><blockquote><ol><li>列表1  <ol><li>列表1.1  </li><li>列表1.2  </li></ol></li></ol></blockquote><p>(2)无序列表  </p><blockquote><ul><li>列表1  <ul><li>列表1.1  </li><li>列表1.2  </li></ul></li></ul></blockquote><p><img src="/article/first_article/2.png" alt=""></p><h2 id="三、引�"><a href="#三、引�" class="headerlink" title="三、引�?"></a>三、引�?</h2><p>如果你需要在文稿中引用一段别处的句子，那么就要用到「引用」格�?,如图</p><blockquote><p>山有木兮木有枝，心悦君兮君不知的🌸  </p></blockquote><h2 id="四、图�"><a href="#四、图�" class="headerlink" title="四、图�?"></a>四、图�?</h2><p>通过！[ 描述]（图片的相对路径/绝对路径）的符号就能引用图片<br><img src="/article/first_article/3.webp" alt=""></p><div class="note default simple"><p>default 提示块标签</p></div><h2 id="六、时间轴"><a href="#六、时间轴" class="headerlink" title="六、时间轴"></a>六、时间轴</h2><div class="timeline blue"><div class='timeline-item headline'><div class='timeline-item-title'><div class='item-circle'><p>时间轴样�?</p></div></div></div><div class='timeline-item'><div class='timeline-item-title'><div class='item-circle'><p>2020-07-24 <a href="https://github.com/volantis-x/hexo-theme-volantis/releases">2.6.6 -&gt; 3.0</a></p></div></div><div class='timeline-item-content'><ol><li>如果�? <code>hexo-lazyload-image</code> 插件，需要删除并重新安装最新版本，设置 <code>lazyload.isSPA: true</code>�?</li><li>2.x 版本�? css �? js 不适用�? 3.x 版本，如果使用了 <code>use_cdn: true</code> 则需要删除�?</li><li>2.x 版本�? fancybox 标签�? 3.x 版本中被重命名为 gallery �?</li><li>2.x 版本的置�? <code>top: true</code> 改为�? <code>pin: true</code>，并且同样适用�? <code>layout: page</code> 的页靀�?</li><li>如果使用�? <code>hexo-offline</code> 插件，建议卸载，3.0 版本默认开启了 pjax 服务�?</li></ol></div></div><div class='timeline-item'><div class='timeline-item-title'><div class='item-circle'><p>2020-05-15 <a href="https://github.com/volantis-x/hexo-theme-volantis/releases/tag/2.6.6">2.6.3 -&gt; 2.6.6</a></p></div></div><div class='timeline-item-content'><p>不需要额外处理�?</p></div></div><div class='timeline-item'><div class='timeline-item-title'><div class='item-circle'><p>2020-04-20 <a href="https://github.com/volantis-x/hexo-theme-volantis/releases/tag/2.6.3">2.6.2 -&gt; 2.6.3</a></p></div></div><div class='timeline-item-content'><ol><li>全局搜索 <code>seotitle</code> 并替换为 <code>seo_title</code>�?</li><li>group 组件的索引规则有变，使用 group 组件的文章内，<code>group: group_name</code> 对应的组件名必须�? <code>group_name</code>�?</li><li>group 组件的列表名优先显示文章�? <code>short_title</code> 其次�? <code>title</code>�?</li></ol></div></div></div>]]></content>
       
       
       <categories>
           
-          <category> MakeDown </category>
+          <category> 语法 </category>
           
       </categories>
       
@@ -63,7 +67,7 @@
     
     
     <entry>
-      <title>第三篇博客文章</title>
+      <title>第三篇博客文�?</title>
       <link href="/2023/01/06/2023-01-03%E7%AC%AC%E4%B8%89%E7%AF%87%E6%96%87%E7%AB%A0/"/>
       <url>/2023/01/06/2023-01-03%E7%AC%AC%E4%B8%89%E7%AF%87%E6%96%87%E7%AB%A0/</url>
       
@@ -82,18 +86,12 @@
     
     
     <entry>
-      <title>信号与系统复习资料</title>
+      <title>信号与系统复习资�?</title>
       <link href="/2023/01/06/2023-01-03%E7%AC%AC%E4%BA%8C%E7%AF%87%E6%96%87%E7%AB%A0/"/>
       <url>/2023/01/06/2023-01-03%E7%AC%AC%E4%BA%8C%E7%AF%87%E6%96%87%E7%AB%A0/</url>
       
-        <content type="html"><![CDATA[<h1 id="信号与系统的复习😶‍🌫️"><a href="#信号与系统的复习😶‍🌫️" class="headerlink" title="信号与系统的复习😶‍🌫️"></a>信号与系统的复习😶‍🌫️</h1><hr><p>目前还没想到有啥可以丢在这的</p>]]></content>
+        <content type="html"><![CDATA[<h1 id="信号与系统的复习😶‍🌫️"><a href="#信号与系统的复习😶‍🌫️" class="headerlink" title="信号与系统的复习😶‍🌫️"></a>信号与系统的复习😶‍🌫️</h1><hr><p>目前还没想到有啥可以丢在这的</p><table rules="none" align="center">    <tr>        <td>            <center>                <img src="https://img-blog.csdnimg.cn/293b792757c24b8caa1ffba18ce76831.jpg" width="60%" />                <br/>            </center>        </td>        <td>            <center>                <img src="https://img-blog.csdnimg.cn/f70c9b6462314611828f3349942b1227.jpg" width="60%" />                <br/>            </center>        </td>    </tr></table>]]></content>
       
-      
-      <categories>
-          
-          <category> 信号与系统 </category>
-          
-      </categories>
       
       
     </entry>
