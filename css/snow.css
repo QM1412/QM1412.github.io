@@ -1,17 +1,1 @@
-/* ѩ����Ч */
-[data-theme="light"] #snow{
-    display: block;
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: -2;
-  }
-  
-  /* ѩ����ҹģʽ����ʾ */
-  [data-theme="dark"] #snow{
-    display: none;
-  }
-  
+[data-theme=light] #snow{display:block;position:fixed;left:0;top:0;width:100%;height:100%;pointer-events:none;z-index:-2}[data-theme=dark] #snow{display:none}

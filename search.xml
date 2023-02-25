@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>触摸屏(三)---电阻屏校准算法</title>
+      <link href="/2023/02/25/Screen_calibration/"/>
+      <url>/2023/02/25/Screen_calibration/</url>
+      
+        <content type="html"><![CDATA[<h1 id="为什么电阻屏要校准"><a href="#为什么电阻屏要校准" class="headerlink" title="为什么电阻屏要校准"></a>为什么电阻屏要校准</h1><p>其实就是一种坐标的转换，lcd屏幕有自己的扫描方向，但是触摸屏也有自己的扫描方向，可能两个坐标系不一定相同，这样触摸的点就不能对应显示反馈到显示屏，这个时候就要校准，目的就是在这两种坐标系之间找到一种合适正确的映射关系，使触摸屏上显示的图形经过变换，与LCD显示的图形保持一致。</p><p><img src="https://s1.vika.cn/space/2023/02/25/65d59dceb72449b7a1eaba482c82080f" alt="image-20230225091930809"></p><h1 id="电阻触摸屏的基本线性校准算法"><a href="#电阻触摸屏的基本线性校准算法" class="headerlink" title="电阻触摸屏的基本线性校准算法"></a>电阻触摸屏的基本线性校准算法</h1><p>我们设这里Q（x，y）为触摸屏上的点，称为物理坐标；Qd（xd，yd）为LCD显示屏上的点，称为显示坐标。</p><p><strong>设物理坐标（用极坐标表示）：</strong></p><p><img src="https://s1.vika.cn/space/2023/02/25/565ac6ca56d946998b1afe3e37701a2f" alt="image-20230225094031942"></p><p>考虑到两个屏之间可能还会存在角度上的误差，每个点的x和y可能存在缩放的问题，还会有移动的误差，那么综合一下，抽象一个抽象的数学模型出来😅</p><p>假设角度差为φ，缩放因子为kx和ky，位移因子为Sx和Sy，可得到显示坐标：</p><p><img src="https://s1.vika.cn/space/2023/02/25/d688f7c37a964d9790a1a3025b1e404d" alt="image-20230225093502854"></p><p>一般情况，触摸屏和 LCD 显示屏之间的角度误差 φ 极小，则 sinφ≈φ，cosφ≈1。那么，LCD 显示屏上点坐标可以化简为：</p><p><img src="https://s1.vika.cn/space/2023/02/25/9634b42a8276458a9f63c181e24a109e" alt="image-20230225094642014"></p><p><img src="https://s1.vika.cn/space/2023/02/25/0f3a35d246d14c96a549e457cf42198f" alt="image-20230225095011564"></p><p>由上式中可以看出，除了x和y，方程式右边各项均为常量，即触摸屏和显示屏的坐标系可以认为是线性的，基于此方程实现的校准也称为<strong>线性校准</strong>。现在用一般情况来代替各乘积项的系数，则可以得到：</p><p><img src="https://s1.vika.cn/space/2023/02/25/0da64d644c5347bc9f1cc57743658ee0" alt="image-20230225095349584"></p><p>显然，如果能求出线性变换的参数（A,B,C,D,E,F），就可以通过上述等式来校准从触摸屏那里得来的显示坐标了,为了求出这六个参数，在触摸屏上任意取三个点（<code>但是要尽量避免边界的点</code>）。</p><p>设物理坐标分别为：（x1，y1）、（x2，y2）、（x3，y3）</p><p>设显示坐标分别为：（xd1，yd1）、（xd2，yd2）、（xd3，yd3）</p><p>然后带入方程，得到以下六个等式:</p><p><img src="https://s1.vika.cn/space/2023/02/25/829b59799fea4ae0b1a2b4dac4bf6972" alt="image-20230225100236528"></p><p>然后通过两两相消(其实就是消掉一个未知数):</p><p><img src="https://s1.vika.cn/space/2023/02/25/d4e991cdb1d345f881109cde7236f76e" alt="image-20230225100935275"></p><p>然后通过以下计算就可以求出六个参数:</p><p><img src="https://s1.vika.cn/space/2023/02/25/62f37015b19b4cb297daf74627bb182e" alt="image-20230225102501441"></p><p><img src="https://s1.vika.cn/space/2023/02/25/0be8e977d3f64dbd8ff95ebfd94bb1f2" alt="image-20230225102516367"></p><p>同理：</p><p><img src="https://s1.vika.cn/space/2023/02/25/f802817b85e14e35a41d8551e767fab9" alt="image-20230225102600108"></p><p>这个算法的前提就是，只有在触摸屏和LCD显示屏之间的<code>角度误差φ极小</code>的情况下，上述的基本线性校准算法才适用。</p><h1 id="电阻式触摸屏校准算法的优化"><a href="#电阻式触摸屏校准算法的优化" class="headerlink" title="电阻式触摸屏校准算法的优化"></a>电阻式触摸屏校准算法的优化</h1><p>为了使校准更加精确，现在触摸屏上任意取五个点，设物理坐标和显示坐标分别为（x1，y1）、（x2，y2）、（x3，y3）、（x4，y4）、（x5，y5）和（xd1，yd1）、（xd2，yd2）、（xd3，yd3）、（xd4，yd4）、（xd5，yd5）。</p><p>带入xd的坐标方程得：</p><p><img src="https://s1.vika.cn/space/2023/02/25/d05a78fa3eba4b378da77a623700531e" alt="image-20230225103230653"></p><p>将等式做以下处理（其实跟三点差不多）:</p><ul><li>第一步:将原方程 5个等式直接相加，得第 1个总等式:</li></ul><p><img src="https://s1.vika.cn/space/2023/02/25/e2a62b3239994429bde7f034bc06466e" alt="image-20230225103727922"></p><ul><li><p>第二步：将原方程 5 个等式分别乘以参数x然后 5 个等式相加，得第 2个总等式:</p><p><img src="https://s1.vika.cn/space/2023/02/25/16919d84cd6542ebbc86b070aa1fd309" alt="image-20230225104211883"></p></li><li><p>第三步:将原方程 5 个等式分别乘以参数y然后 5 个等式相加，得第 3个总等式:</p></li></ul><p><img src="https://s1.vika.cn/space/2023/02/25/bab6a72808ae423f8ef0fbc61c3e0c42" alt="image-20230225104429695"></p><p>由这三个总等式构成一个 x坐标的三阶线性方程组，用克莱姆法则可以将参数 A，B，C求出，对于剩下三个参数也是同理哈，笔者就不赘述啦。</p><h1 id="克拉姆法则"><a href="#克拉姆法则" class="headerlink" title="克拉姆法则"></a>克拉姆法则</h1><p><a href="">克莱姆法则</a>是一种求解<strong>线性方程组</strong>的方法，例如对于如下的线性方程组：</p><p><img src="https://s1.vika.cn/space/2023/02/25/98758bbf880a43168c860c0ebf7ebae7" alt="image-20230225104732441"></p><p>运用克莱姆法则，这个方程组的解可以如下：</p><p><img src="https://s1.vika.cn/space/2023/02/25/34a9ec1b7d294817b1c254d6147fabfe" alt="image-20230225104752053"></p><p>其中D，Dx，Dy，分别是以下行列式:</p><p><img src="https://s1.vika.cn/space/2023/02/25/31fbeab1d4a74f5b924c16030cdf68d4" alt="image-20230225104847874"></p><p>对于更一般的情况：</p><p><img src="https://s1.vika.cn/space/2023/02/25/c1eaf7322f884338944914112af6982a" alt="image-20230225105135849"></p><p>解可以由同样的公式给出：</p><p><img src="https://s1.vika.cn/space/2023/02/25/2789e46c4bda46a2bca8dc8e26b160ac" alt="image-20230225105150074"></p><p>其中：</p><p><img src="https://s1.vika.cn/space/2023/02/25/a297e92defd64294a7d6d216f578e223" alt="image-20230225105206733"></p><p><strong>Ai</strong>是将矩阵<strong>A</strong>的第<code>i</code>纵列换成<strong>向量b</strong>之后得到的矩阵。</p><p>可以看出，这些表达式只有在<strong>D=det(A)</strong>存在并且不等于0的时候才是有意义的，这点只有在有效方程数等于未知数的个数的时候才能得到保证。</p><p><strong>举个栗子🌰：</strong></p><p><img src="https://s1.vika.cn/space/2023/02/25/cff074e107994bd48799a1032848f8b7" alt="image-20230225110412096"></p><p>那么D就是以下行列式:</p><p><img src="https://s1.vika.cn/space/2023/02/25/6393bff73a2444469e3a83f8749f863d" alt="image-20230225110419545"></p><p>那么D1，D2，D3就是以下行列式:</p><p><img src="https://s1.vika.cn/space/2023/02/25/9462e84912b8447d8a64b8c6f515e1ff" alt="image-20230225110625972"></p><p>那么就能求出x1，x2，x3是多少啦！</p><p>本章结束啦。🐧</p><h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p><a href="https://blog.csdn.net/zbq_tt5/article/details/90043320">克莱姆法则<em>BigZong的博客-CSDN博客</em>克莱姆法则</a></p><p><a href="https://m.elecfans.com/article/619930.html">电阻式触摸屏校准算法的优化_电阻式触摸屏工作原理-电子发烧友网 (elecfans.com)</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> STM32 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> STM32 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>触摸屏(一)---四线电阻触摸屏原理</title>
       <link href="/2023/02/21/ReScreen/"/>
       <url>/2023/02/21/ReScreen/</url>
